@@ -156,39 +156,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -803,7 +770,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.load
     }
-  }, [_vm._v("Load")])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Load")])])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4"
@@ -811,7 +778,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel"
   }, [_c('header', {
     staticClass: "panel-heading"
-  }, [_vm._v("\n               " + _vm._s(_vm.product) + " Recall "), _vm._m(3)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n               " + _vm._s(_vm.product) + " Recall "), _vm._m(0)]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "main-chart",
@@ -830,7 +797,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel"
   }, [_c('header', {
     staticClass: "panel-heading"
-  }, [_vm._v("\n             " + _vm._s(_vm.product) + " - By Territory"), _vm._m(4)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n             " + _vm._s(_vm.product) + " - By Territory"), _vm._m(1)]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "main-chart",
@@ -851,7 +818,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel"
   }, [_c('header', {
     staticClass: "panel-heading"
-  }, [_vm._v("\n             " + _vm._s(_vm.product) + " - Materials Used"), _vm._m(5)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n             " + _vm._s(_vm.product) + " - Materials Used"), _vm._m(2)]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "main-chart",
@@ -870,7 +837,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel"
   }, [_c('header', {
     staticClass: "panel-heading"
-  }, [_vm._v("\n              " + _vm._s(_vm.product) + " - Discussion Length "), _vm._m(6)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n              " + _vm._s(_vm.product) + " - Discussion Length "), _vm._m(3)]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "main-chart",
@@ -885,99 +852,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-3"
-  }, [_c('div', {
-    staticClass: "mini-stat clearfix"
-  }, [_c('label', {
-    attrs: {
-      "for": "doctor"
-    }
-  }, [_vm._v("Doctors")]), _vm._v(" "), _c('select', {
-    staticClass: "custom-select",
-    attrs: {
-      "name": "doctor"
-    }
-  }, [_c('option', {
-    attrs: {
-      "value": "Actemra"
-    }
-  }, [_vm._v("Actemra")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "Enbrel"
-    }
-  }, [_vm._v("Enbrel")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "Remicade"
-    }
-  }, [_vm._v("Remicade")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "Simponi"
-    }
-  }, [_vm._v("Simponi")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-3"
-  }, [_c('div', {
-    staticClass: "mini-stat clearfix"
-  }, [_c('label', {
-    attrs: {
-      "for": "doctor"
-    }
-  }, [_vm._v("Something Else")]), _vm._v(" "), _c('select', {
-    staticClass: "custom-select",
-    attrs: {
-      "name": "doctor"
-    }
-  }, [_c('option', {
-    attrs: {
-      "value": "Actemra"
-    }
-  }, [_vm._v("Actemra")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "Enbrel"
-    }
-  }, [_vm._v("Enbrel")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "Remicade"
-    }
-  }, [_vm._v("Remicade")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "Simponi"
-    }
-  }, [_vm._v("Simponi")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-3"
-  }, [_c('div', {
-    staticClass: "mini-stat clearfix"
-  }, [_c('label', {
-    attrs: {
-      "for": "doctor"
-    }
-  }, [_vm._v("Something Else")]), _vm._v(" "), _c('select', {
-    staticClass: "custom-select",
-    attrs: {
-      "name": "doctor"
-    }
-  }, [_c('option', {
-    attrs: {
-      "value": "Actemra"
-    }
-  }, [_vm._v("Actemra")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "Enbrel"
-    }
-  }, [_vm._v("Enbrel")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "Remicade"
-    }
-  }, [_vm._v("Remicade")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "Simponi"
-    }
-  }, [_vm._v("Simponi")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
     staticClass: "tools pull-right"
   }, [_c('a', {

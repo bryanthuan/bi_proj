@@ -13,39 +13,6 @@
                     <button @click="load">Load</button>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="mini-stat clearfix">
-                    <label for="doctor">Doctors</label> 
-                    <select name="doctor" class="custom-select">
-                        <option value="Actemra">Actemra</option>
-                        <option value="Enbrel">Enbrel</option>
-                        <option value="Remicade">Remicade</option>
-                        <option value="Simponi">Simponi</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="mini-stat clearfix">
-                    <label for="doctor">Something Else</label> 
-                    <select name="doctor" class="custom-select">
-                        <option value="Actemra">Actemra</option>
-                        <option value="Enbrel">Enbrel</option>
-                        <option value="Remicade">Remicade</option>
-                        <option value="Simponi">Simponi</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="mini-stat clearfix">
-                    <label for="doctor">Something Else</label> 
-                    <select name="doctor" class="custom-select">
-                        <option value="Actemra">Actemra</option>
-                        <option value="Enbrel">Enbrel</option>
-                        <option value="Remicade">Remicade</option>
-                        <option value="Simponi">Simponi</option>
-                    </select>
-                </div>
-            </div>
         </div>
         <div class="row">
         <div class="col-md-4">
