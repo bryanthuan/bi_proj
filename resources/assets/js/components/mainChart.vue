@@ -128,6 +128,7 @@
     </div>
     </div>
 </template>
+
 <script>
     import 'echarts-liquidfill';
     import 'echarts/lib/chart/bar';
@@ -139,14 +140,18 @@
         data() {
             return {
                 recallBar: {
-                        title: {
-                        
-                        },
-                        tooltip: {},
-                        legend: {
-                            data: ["Actemra"]
+                        grid: {
+                            left: '0%',
+                            right: '0%',
+                            bottom: '16%',
+                            containLabel: true
                         },
                         xAxis: {
+                            type : 'category',
+                            axisLabel: {
+                                interval:0,
+                                rotate:35,
+                            },
                             data: ["1st Spontaneous","Other Spontaneous","Prompted","No Recall"]
                         },
                         yAxis:  {
@@ -170,10 +175,19 @@
                     
                         },
                         tooltip: {},
-                        legend: {
-                            data: ["Actemra"]
+                        grid: {
+                            left: '0%',
+                            right: '0%',
+                            bottom: '16%',
+                            containLabel: true
                         },
                         xAxis: {
+                            type : 'category',
+                            axisLabel: {
+                                interval:0,
+                                rotate:35,
+                                margin:6
+                            },
                             data: ["Less than 5 minutes","5 minutes","10 minutes","12 minutes",'14 minutes','15 minutes','20 minutes','25 minutes']
                         },
                         yAxis:  {
@@ -191,13 +205,8 @@
                         }]
                     },
                     materialsBar: {
-                        title: {
-                        },
-                        tooltip: {},
-                        legend: {
-                            data: ["Actemra"]
-                        },
                         xAxis: {
+                            type : 'category',
                             data: ["Paper-based","Laptop","iPad","Verbal only"]
                         },
                         yAxis:  {
@@ -215,19 +224,24 @@
                         }]
                     },
                     recallTerritoryBar: {
-                        title: {
-                        },
-                        tooltip: {},
                         grid: {
-                                left: '3%',
-                                right: '4%',
-                                bottom: '3%',
-                                containLabel: true
-                            },
+                            left: '2%',
+                            right: '0%',
+                            bottom: '17%',
+                            containLabel: true
+                        },
                         legend: {
                             data:['1st Spontaneous','Other Spontaneous','Prompted','No Recall']
                         },
                         xAxis: {
+                            type : 'category',
+                            axisLabel: {
+                                interval:0,
+                                rotate:35,
+                                textStyle:{
+                                    fontSize:10,
+                                }
+                            },
                             data: []
                         },
                         yAxis: {
@@ -446,17 +460,13 @@
                         console.log(otherSpon);
                         
                         recallTerritoryBar.mergeOptions({
-                             xAxis : [
-                                {
-                                    type : 'category',
+                             xAxis : [{
+                                    
                                     data : Object.keys(dict),
-                                }
-                            ],       
-                             yAxis : [
-                                {
+                                }],       
+                             yAxis : [{
                                     type : 'value'
-                                }
-                            ],
+                                    }],
                             series: [
                                 {
                                     name: '1st Spontaneous',

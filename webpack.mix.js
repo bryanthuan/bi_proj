@@ -1,3 +1,4 @@
+var path = require('path')
 const { mix } = require('laravel-mix');
 
 /*
@@ -12,9 +13,11 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    mix.combine([
+.extract(['vue','vue-router','axios','jquery','bootstrap-sass','dcjqaccordion','jquery.cookie','jquery.nicescroll','vue-echarts','vuex','echarts-liquidfill','vue-echarts/components/ECharts.vue','echarts/lib/chart/bar','echarts/lib/component/tooltip','echarts/theme/dark'])
+.combine([
     'resources/assets/css/bootstrap-reset.css',
     'resources/assets/css/style.css',
     'resources/assets/css/style-responsive.css'
-], 'public/css/app.css')
-    .extract(['vue','vue-router','axios','jquery','bootstrap-sass','dcjqaccordion','jquery.cookie','jquery.nicescroll','vue-echarts','vuex','echarts-liquidfill'])
+], 'public/css/app.css');
+
+    
