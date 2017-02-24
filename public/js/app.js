@@ -265,6 +265,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 },
                 xAxis: {
                     type: 'category',
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 35,
+                        textStyle: {
+                            fontSize: 10
+                        }
+                    },
                     data: []
                 },
                 yAxis: {
@@ -452,7 +459,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
 
                 //List Data
-                var xyz = Object.values(dict);
+                //let xyz=Object.values(dict);
+                //let xyz=Object.values(dict);
+                var xyz = Object.keys(dict).map(function (key) {
+                    return dict[key];
+                });
                 var firstSpon = [];
                 xyz.forEach(function (value) {
                     firstSpon.push(value['1st Spontaneous']);

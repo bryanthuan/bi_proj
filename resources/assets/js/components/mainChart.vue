@@ -205,6 +205,13 @@
                         },
                         xAxis: {
                             type : 'category',
+                            axisLabel: {
+                                interval:0,
+                                rotate:35,
+                                textStyle:{
+                                    fontSize:10,
+                                }
+                            },
                             data: []
                         },
                         yAxis: {
@@ -410,7 +417,11 @@
                         
 
                         //List Data
-                        let xyz=Object.values(dict);
+                        //let xyz=Object.values(dict);
+                        //let xyz=Object.values(dict);
+                       let xyz = Object.keys(dict).map(function(key) {
+                            return dict[key];
+                        });
                         let firstSpon=[];
                         xyz.forEach((value)=>{
                             firstSpon.push(value['1st Spontaneous'])
