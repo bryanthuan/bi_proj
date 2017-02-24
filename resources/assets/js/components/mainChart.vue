@@ -205,13 +205,6 @@
                         },
                         xAxis: {
                             type : 'category',
-                            axisLabel: {
-                                interval:0,
-                                rotate:35,
-                                textStyle:{
-                                    fontSize:10,
-                                }
-                            },
                             data: []
                         },
                         yAxis: {

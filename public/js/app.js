@@ -265,13 +265,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 },
                 xAxis: {
                     type: 'category',
-                    axisLabel: {
-                        interval: 0,
-                        rotate: 35,
-                        textStyle: {
-                            fontSize: 10
-                        }
-                    },
                     data: []
                 },
                 yAxis: {
