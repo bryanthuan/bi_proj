@@ -140,6 +140,7 @@
         data() {
             return {
                 recallBar: {
+                        tooltip: {},
                         grid: {
                             left: '0%',
                             right: '0%',
@@ -171,9 +172,6 @@
                         }]
                     },
                     discLengthBar: {
-                        title: {
-                    
-                        },
                         tooltip: {},
                         grid: {
                             left: '0%',
@@ -205,8 +203,12 @@
                         }]
                     },
                     materialsBar: {
+                        tooltip: {},
                         xAxis: {
                             type : 'category',
+                            axisLabel: {
+                                interval:0,
+                            },
                             data: ["Paper-based","Laptop","iPad","Verbal only"]
                         },
                         yAxis:  {
@@ -224,6 +226,7 @@
                         }]
                     },
                     recallTerritoryBar: {
+                        tooltip: {},
                         grid: {
                             left: '2%',
                             right: '0%',

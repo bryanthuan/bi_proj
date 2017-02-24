@@ -200,6 +200,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             recallBar: {
+                tooltip: {},
                 grid: {
                     left: '0%',
                     right: '0%',
@@ -231,7 +232,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }]
             },
             discLengthBar: {
-                title: {},
                 tooltip: {},
                 grid: {
                     left: '0%',
@@ -263,8 +263,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }]
             },
             materialsBar: {
+                tooltip: {},
                 xAxis: {
                     type: 'category',
+                    axisLabel: {
+                        interval: 0
+                    },
                     data: ["Paper-based", "Laptop", "iPad", "Verbal only"]
                 },
                 yAxis: {
@@ -282,6 +286,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }]
             },
             recallTerritoryBar: {
+                tooltip: {},
                 grid: {
                     left: '2%',
                     right: '0%',
