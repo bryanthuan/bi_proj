@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/app.6253eb24c34f025c521cfde72171d179.css" rel="stylesheet">
     
     @yield('stylesheet')
     <script>
@@ -42,8 +42,8 @@
     <!-- Placed js at the end of the document so the pages load faster -->
 
     <!--Core js-->
-    <script src="/js/manifest.js"></script>
-    <script src="/js/vendor.js"></script>
+    <script src="/js/manifest.d41d8cd98f00b204e980.js"></script>
+    <script src="/js/vendor.5efab150bbf5e291faa3.js"></script>
 
   </body>
 </html>
