@@ -156,6 +156,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -285,11 +291,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }]
             },
             seconds: -1,
-            product: 'Actemra'
+            product: 'Actemra',
+            chartDrillDown4: 'Discussion Length (click on any bar to drill down)',
+            yDataLength: [],
+            drillDownState: 0
         };
     },
 
     methods: {
+        clearSelectionChart4: function clearSelectionChart4(e) {
+            e.preventDefault();
+            this.drillDownState = 0;
+            var discLengthBar = this.$refs.discLengthBar;
+            this.chartDrillDown4 = 'Discussion Length (click on any bar to drill down)';
+            var xDataLength = ["Less than 5 minutes", "5 minutes", "10 minutes", "12 minutes", '14 minutes', '15 minutes', '20 minutes', '25 minutes'];
+            discLengthBar.mergeOptions({
+                xAxis: {
+                    data: xDataLength
+                },
+                series: [{
+                    name: 'Discuss Length',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top',
+                            formatter: function formatter(a) {
+                                return a.data + '%';
+                            }
+                        }
+                    },
+                    data: this.yDataLength
+                }]
+            });
+        },
         load: function load() {
             var recallBar = this.$refs.recallBar;
             var discLengthBar = this.$refs.discLengthBar;
@@ -297,6 +331,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var recallTerritoryBar = this.$refs.recallTerritoryBar;
             var self = this;
             axios.get('/data').then(function (response) {
+
+                recallBar.chart.off('click');
 
                 var mart = response.data;
                 var d1 = mart.filter(function (item) {
@@ -327,6 +363,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 };
                 recallBar.mergeOptions(async);
 
+                //console.log(recallBar);
+
+
                 var m0 = mart.filter(function (item) {
                     return parseInt(item.q9_1_lengh_of_disc) < 5;
                 });
@@ -353,6 +392,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return parseInt(item.q9_1_lengh_of_disc) == 25;
                 });
 
+                //Zoom level1
+                var xDataLength = ["Less than 5 minutes", "5 minutes", "10 minutes", "12 minutes", '14 minutes', '15 minutes', '20 minutes', '25 minutes'];
+
+                var yDataLength = [Math.round(m0.length / mart.length * 100), Math.round(m5.length / mart.length * 100), Math.round(m10.length / mart.length * 100), Math.round(m12.length / mart.length * 100), Math.round(m14.length / mart.length * 100), Math.round(m15.length / mart.length * 100), Math.round(m20.length / mart.length * 100), Math.round(m25.length / mart.length * 100)];
+                self.yDataLength = yDataLength;
+                //Zoom Level 2
+                var xDataImpactRx = ["Increase", "No Change", "Decrease"];
+
                 discLengthBar.mergeOptions({
                     series: [{
                         name: 'Discuss Length',
@@ -365,9 +412,140 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 }
                             }
                         },
-                        data: [Math.round(m0.length / mart.length * 100), Math.round(m5.length / mart.length * 100), Math.round(m10.length / mart.length * 100), Math.round(m12.length / mart.length * 100), Math.round(m14.length / mart.length * 100), Math.round(m15.length / mart.length * 100), Math.round(m20.length / mart.length * 100), Math.round(m25.length / mart.length * 100)]
+                        data: yDataLength
                     }]
                 });
+
+                var yDataImpartRx = [];
+                discLengthBar.chart.on('click', function (params) {
+                    if (self.drillDownState == 1) {
+                        return;
+                    }
+                    var l21 = [];
+                    var l22 = [];
+                    self.drillDownState = 1;
+                    var l23 = [];
+                    self.chartDrillDown4 = 'Discussion Length - ' + xDataLength[params.dataIndex] + ' - Impact on Rx';
+                    switch (params.dataIndex) {
+                        case 0:
+                            //Statements executed when the result of expression matches value1
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) < 5 && item.q11_1_prescribing_change === "3";
+                            });
+                            l22 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) < 5 && item.q11_1_prescribing_change === "2";
+                            });
+                            l23 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) < 5 && item.q11_1_prescribing_change === "1";
+                            });
+                            yDataImpartRx = [Math.round(l21.length / m0.length * 100), Math.round(l22.length / m0.length * 100), Math.round(l23.length / m0.length * 100)];
+                            break;
+                        case 1:
+                            //Statements executed when the result of expression matches value2
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 5 && item.q11_1_prescribing_change === "3";
+                            });
+                            l22 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 5 && item.q11_1_prescribing_change === "2";
+                            });
+                            l23 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 5 && item.q11_1_prescribing_change === "1";
+                            });
+                            yDataImpartRx = [Math.round(l21.length / m5.length * 100), Math.round(l22.length / m5.length * 100), Math.round(l23.length / m5.length * 100)];
+                            break;
+                        case 2:
+                            //Statements executed when the result of expression matches valueN
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 10 && item.q11_1_prescribing_change === "3";
+                            });
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 10 && item.q11_1_prescribing_change === "2";
+                            });
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 10 && item.q11_1_prescribing_change === "1";
+                            });
+                            yDataImpartRx = [Math.round(l21.length / m10.length * 100), Math.round(l22.length / m10.length * 100), Math.round(l23.length / m10.length * 100)];
+
+                            break;
+                        case 3:
+                            //Statements executed when the result of expression matches valueN
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 12 && item.q11_1_prescribing_change === "3";
+                            });
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 12 && item.q11_1_prescribing_change === "2";
+                            });
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 12 && item.q11_1_prescribing_change === "1";
+                            });
+                            yDataImpartRx = [Math.round(l21.length / m12.length * 100), Math.round(l22.length / m12.length * 100), Math.round(l23.length / m12.length * 100)];
+                            break;
+                        case 4:
+                            //Statements executed when the result of expression matches valueN
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 14 && item.q11_1_prescribing_change === "3";
+                            });
+                            l22 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 14 && item.q11_1_prescribing_change === "2";
+                            });
+                            l23 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 14 && item.q11_1_prescribing_change === "1";
+                            });
+                            yDataImpartRx = [Math.round(l21.length / m14.length * 100), Math.round(l22.length / m14.length * 100), Math.round(l23.length / m14.length * 100)];
+                            break;
+                        case 5:
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 15 && item.q11_1_prescribing_change === "3";
+                            });
+                            l22 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 15 && item.q11_1_prescribing_change === "2";
+                            });
+                            l23 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 15 && item.q11_1_prescribing_change === "1";
+                            });
+                            yDataImpartRx = [Math.round(l21.length / m15.length * 100), Math.round(l22.length / m15.length * 100), Math.round(l23.length / m15.length * 100)];
+                            //Statements executed when the result of expression matches valueN
+                            break;
+                        case 6:
+                            //Statements executed when the result of expression matches valueN
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 20 && item.q11_1_prescribing_change === "3";
+                            });
+                            l22 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 20 && item.q11_1_prescribing_change === "2";
+                            });
+                            l23 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 20 && item.q11_1_prescribing_change === "1";
+                            });
+                            yDataImpartRx = [Math.round(l21.length / m20.length * 100), Math.round(l22.length / m20.length * 100), Math.round(l23.length / m20.length * 100)];
+                            break;
+                        case 7:
+                            //Statements executed when the result of expression matches valueN
+                            l21 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 25 && item.q11_1_prescribing_change === "3";
+                            });
+                            l22 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 25 && item.q11_1_prescribing_change === "2";
+                            });
+                            l23 = mart.filter(function (item) {
+                                return parseInt(item.q9_1_lengh_of_disc) === 25 && item.q11_1_prescribing_change === "1";
+                            });
+                            yDataImpartRx = [Math.round(l21.length / m25.length * 100), Math.round(l22.length / m25.length * 100), Math.round(l23.length / m25.length * 100)];
+                            break;
+                    }
+
+                    discLengthBar.mergeOptions({
+                        xAxis: {
+                            data: xDataImpactRx
+                        },
+                        series: [{
+                            name: 'Impact on Rx',
+                            data: yDataImpartRx
+                        }]
+                    });
+                });
+
+                //
 
                 //materialsBar
                 var mt11 = mart.filter(function (item) {
@@ -782,7 +960,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel"
   }, [_c('header', {
     staticClass: "panel-heading"
-  }, [_vm._v("\n               " + _vm._s(_vm.product) + " Recall "), _vm._m(0)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                    " + _vm._s(_vm.product) + " Recall "), _vm._m(0)]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "main-chart",
@@ -801,7 +979,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel"
   }, [_c('header', {
     staticClass: "panel-heading"
-  }, [_vm._v("\n             " + _vm._s(_vm.product) + " - By Territory"), _vm._m(1)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                    " + _vm._s(_vm.product) + " - By Territory"), _vm._m(1)]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "main-chart",
@@ -822,7 +1000,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel"
   }, [_c('header', {
     staticClass: "panel-heading"
-  }, [_vm._v("\n             " + _vm._s(_vm.product) + " - Materials Used"), _vm._m(2)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                    " + _vm._s(_vm.product) + " - Materials Used"), _vm._m(2)]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "main-chart",
@@ -841,7 +1019,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel"
   }, [_c('header', {
     staticClass: "panel-heading"
-  }, [_vm._v("\n              " + _vm._s(_vm.product) + " - Discussion Length "), _vm._m(3)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                    " + _vm._s(_vm.product) + " - " + _vm._s(_vm.chartDrillDown4) + " "), _c('span', {
+    staticClass: "tools pull-right"
+  }, [(_vm.drillDownState == 1) ? _c('a', {
+    staticClass: "fa fa-times",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        _vm.clearSelectionChart4($event)
+      }
+    }
+  }, [_vm._v("Clear Selection")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "main-chart",
@@ -856,25 +1046,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "tools pull-right"
-  }, [_c('a', {
-    staticClass: "fa fa-chevron-down",
-    attrs: {
-      "href": "javascript:;"
-    }
-  }), _vm._v(" "), _c('a', {
-    staticClass: "fa fa-cog",
-    attrs: {
-      "href": "javascript:;"
-    }
-  }), _vm._v(" "), _c('a', {
-    staticClass: "fa fa-times",
-    attrs: {
-      "href": "javascript:;"
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
     staticClass: "tools pull-right"
   }, [_c('a', {
